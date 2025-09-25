@@ -5,6 +5,7 @@
 # EnsembleEstimator boer ligger i ensemble_estimator.py på samme nivaa som estimator.py
 # Testing
 
+#Test
 from chtorch.estimator import Estimator
 import numpy as np
 

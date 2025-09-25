@@ -71,7 +71,7 @@ def test_save(train_test, tmp_path):
     predictor.load(out_path)
     # assert out_path.exists()
 
-# Test EnsembleEstimator
+# Test EnsembleEstimator class
 def test_ensemble_estimator_train_and_predict(ch_dataset, model_configuration, problem_configuration):
     model_configurations = [model_configuration, model_configuration]
     ensemble = EnsembleEstimator(problem_configuration, model_configurations)
