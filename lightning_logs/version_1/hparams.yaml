@@ -1,0 +1,24 @@
+additional_covariates:
+- rainfall
+- mean_temperature
+augmentations: []
+batch_size: 64
+context_length: 12
+direct_ar: false
+dropout: 0.0
+embed_dim: 4
+embedding_type: concat
+learning_rate: 0.001
+mask_covid: true
+max_dim: 32
+max_epochs: null
+n_hidden: 4
+n_layers: 1
+num_rnn_layers: 1
+output_embedding_dim: 0
+past_ratio: 0.2
+previous_cases: false
+rnn_type: GRU
+state_dim: 4
+use_population: true
+weight_decay: 1.0e-06
