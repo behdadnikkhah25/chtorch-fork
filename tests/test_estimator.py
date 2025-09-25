@@ -7,6 +7,8 @@ from chtorch.cli import run_validation_training
 from chtorch.estimator import Estimator
 from chtorch.configuration import ModelConfiguration, ProblemConfiguration
 from chtorch.hpo import HPOConfiguration, HPOEstimator
+from chtorch.ensembleEstimator import EnsembleEstimator
+import numpy as np
 
 
 @pytest.fixture
@@ -68,3 +70,12 @@ def test_save(train_test, tmp_path):
     predictor.save(out_path)
     predictor.load(out_path)
     # assert out_path.exists()
+
+# Test EnsembleEstimator
+def test_ensemble_estimator_train_and_predict(ch_dataset, model_configuration, problem_configuration):
+    model_configurations = [model_configuration, model_configuration]
+    ensemble = EnsembleEstimator(problem_configuration, model_configurations)
+    ensemble.train(ch_dataset)
+    preds = ensemble.predict(ch_dataset)
+    assert isinstance(preds, np.ndarray)
+    assert preds.shape[0] == len(ch_dataset)

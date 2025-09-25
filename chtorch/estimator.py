@@ -248,6 +248,11 @@ class Estimator(ModelBase):
                                   transformer,
                                   target_scaler=target_scaler)
 
+    def predict(self, historic_data: DataSet, future_data: DataSet = None):
+        if not hasattr(self, '_predictor'):
+            raise RuntimeError("Modellen må trenes før prediksjon.")
+        return self._predictor.predict(historic_data, future_data or historic_data)
+
     def add_validation(self, val_dataset: DataSet):
         self._validation_dataset = val_dataset
 
